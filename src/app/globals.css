@@ -1,0 +1,305 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: hsl(var(--sidebar-ring));
+  --color-sidebar-border: hsl(var(--sidebar-border));
+  --color-sidebar-accent-foreground: hsl(var(--sidebar-accent-foreground));
+  --color-sidebar-accent: hsl(var(--sidebar-accent));
+  --color-sidebar-primary-foreground: hsl(var(--sidebar-primary-foreground));
+  --color-sidebar-primary: hsl(var(--sidebar-primary));
+  --color-sidebar-foreground: hsl(var(--sidebar-foreground));
+  --color-sidebar: hsl(var(--sidebar));
+  --color-ring: hsl(var(--ring));
+  --color-input: hsl(var(--input));
+  --color-border: hsl(var(--border));
+  --color-destructive: hsl(var(--destructive));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary: hsl(var(--primary));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card: hsl(var(--card));
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 12px);
+  --radius-4xl: calc(var(--radius) + 16px);
+
+  /* Custom Easing for "Greatestness" Motion */
+  --ease-magnetic: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-fluid: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@layer base {
+  :root {
+    /* Base Theme: Deep Ocean Tech */
+    --background: 230 35% 7%;
+    --foreground: 210 40% 98%;
+    --card: 230 35% 10%;
+    --card-foreground: 210 40% 98%;
+    --popover: 230 35% 8%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 250 100% 65%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 230 35% 15%;
+    --secondary-foreground: 210 40% 90%;
+    --muted: 230 35% 12%;
+    --muted-foreground: 220 20% 65%;
+    --accent: 190 100% 50%;
+    --accent-foreground: 230 35% 5%;
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 230 35% 15%;
+    --input: 230 35% 15%;
+    --ring: 250 100% 65%;
+    --radius: 1.5rem;
+  }
+
+  /* Theme: Pure Crystal (Light) */
+  [data-theme="crystal"] {
+    --background: 210 40% 98%;
+    --foreground: 230 35% 7%;
+    --card: 0 0% 100%;
+    --card-foreground: 230 35% 10%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 230 35% 10%;
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 20% 96%;
+    --secondary-foreground: 230 35% 15%;
+    --muted: 210 20% 96%;
+    --muted-foreground: 220 20% 45%;
+    --accent: 250 100% 65%;
+    --accent-foreground: 0 0% 100%;
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 210 100% 50%;
+  }
+
+  /* Theme: Neon Flow (Cyberpunk) */
+  [data-theme="neon"] {
+    --background: 280 40% 5%;
+    --foreground: 300 100% 95%;
+    --card: 280 40% 8%;
+    --card-foreground: 300 100% 95%;
+    --popover: 280 40% 8%;
+    --popover-foreground: 300 100% 95%;
+    --primary: 320 100% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 280 40% 15%;
+    --secondary-foreground: 300 100% 90%;
+    --muted: 280 40% 12%;
+    --muted-foreground: 290 30% 65%;
+    --accent: 180 100% 50%;
+    --accent-foreground: 280 40% 5%;
+    --border: 280 40% 20%;
+    --input: 280 40% 20%;
+    --ring: 320 100% 60%;
+  }
+
+  /* Theme: Obsidian Magma */
+  [data-theme="magma"] {
+    --background: 20 10% 5%;
+    --foreground: 30 20% 95%;
+    --card: 20 10% 8%;
+    --card-foreground: 30 20% 95%;
+    --primary: 15 90% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 20 10% 15%;
+    --secondary-foreground: 30 20% 90%;
+    --muted: 20 10% 12%;
+    --accent: 40 100% 50%;
+    --accent-foreground: 20 10% 5%;
+    --border: 20 10% 20%;
+    --input: 20 10% 20%;
+    --ring: 15 90% 60%;
+  }
+
+  /* Theme: Polar Aurora */
+  [data-theme="aurora"] {
+    --background: 160 30% 5%;
+    --foreground: 150 20% 95%;
+    --card: 160 30% 8%;
+    --primary: 150 100% 45%;
+    --secondary: 160 30% 15%;
+    --muted: 160 30% 12%;
+    --accent: 190 100% 50%;
+    --border: 160 30% 20%;
+    --input: 160 30% 20%;
+    --ring: 150 100% 45%;
+  }
+}
+
+@keyframes liquid-spill {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(200);
+    opacity: 0;
+  }
+}
+
+html.liquid-transition::view-transition-old(root),
+html.liquid-transition::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html,
+  body {
+    height: 100%;
+    overflow: hidden; /* Prevent scrolling for app-like feel */
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    background: radial-gradient(circle at 50% 0%, #1a1b2e 0%, #0a0b14 100%);
+  }
+}
+
+/* 
+   "Greatestness High" - Liquid Crystal System 
+   Zero dead space. High optical fidelity.
+*/
+
+/* Living Background Animation */
+@keyframes deep-drift {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-2%, 2%) scale(1.05);
+  }
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+}
+
+@keyframes slow-pulse {
+  0%,
+  100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+/* The Animated Water Background Layer */
+.living-water-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -2;
+  background:
+    radial-gradient(
+      circle at 15% 50%,
+      rgba(76, 29, 149, 0.15) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 85% 30%,
+      rgba(6, 182, 212, 0.12) 0%,
+      transparent 50%
+    ),
+    linear-gradient(to bottom, #0f101f, #05060a);
+  overflow: hidden;
+}
+
+.living-water-bg::after {
+  content: "";
+  position: absolute;
+  inset: -50%;
+  width: 200%;
+  height: 200%;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.4;
+  animation: deep-drift 30s infinite ease-in-out alternate;
+  mix-blend-mode: overlay;
+}
+
+/* The "Liquid Panel" - Replacing standard glass */
+/* Note: Using CSS properties directly as simple utility for now */
+@utility liquid-panel {
+  /* High Optical Clarity Base */
+  background-color: rgba(255, 255, 255, 0.02); /* Extremely clear */
+  backdrop-filter: blur(24px) saturate(180%) contrast(110%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%) contrast(110%);
+
+  /* Diamond Cut Edge */
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid rgba(255, 255, 255, 0.15); /* Catch light on top */
+  border-radius: var(--radius);
+
+  /* Deep Shadow for Elevation */
+  box-shadow:
+    0 4px 24px -1px rgba(0, 0, 0, 0.2),
+    0 0 0 1px rgba(0, 0, 0, 0.2),
+    /* Inner dark rim */ inset 0 1px 0 rgba(255, 255, 255, 0.05); /* Inner light rim */
+
+  transition: all 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+@utility liquid-panel-hover {
+  @apply liquid-panel;
+}
+
+.liquid-panel:hover {
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 8px 32px -2px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(0, 0, 0, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px) scale(1.002);
+}
+
+/* Active/Selected State for Panels */
+@utility liquid-active {
+  background-color: rgba(255, 255, 255, 0.06);
+  border-color: rgba(6, 182, 212, 0.3); /* Cyan Glow */
+  box-shadow:
+    0 0 20px -5px rgba(6, 182, 212, 0.15),
+    inset 0 0 0 1px rgba(6, 182, 212, 0.1);
+}
+
+/* Custom Scrollbar to match Liquid aesthetics */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 100px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
