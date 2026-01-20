@@ -31,7 +31,10 @@ async function analyzeVideoContent(url: string) {
 
 // --- Helper: Simulate FFmpeg Job --- //
 // This would run the actual ffmpeg command on a worker (Cloud Run Job)
-async function triggerTranscodeJob(jobId: string, params: any) {
+async function triggerTranscodeJob(
+  jobId: string,
+  params: z.infer<typeof CreateShortRequestSchema> & { startTime: number },
+) {
   // In reality: await fetch('https://worker-service/jobs', { ... })
   console.log(`[Worker] Starting job ${jobId} with params:`, params);
 
